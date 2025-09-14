@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consciência Ambiental</title>
+    <link rel="stylesheet" href="css/estilo.css">
+    <link rel="shortcut icon" href="img/imagem_2025-04-23_171408984-removebg-preview (1).png" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Knewave&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: Arial, Verdana, sans-serif; }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <a href="index.html"><img src="img/Logo_CA_inv-removebg-preview.png" alt="" class="logo-img"></a>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">O que é</a></li>
+                    <li><a href="index.html#impactos">Impactos Ambientais</a></li>
+                    <li><a href="index.html#solucoes">Soluções</a></li>
+                    <li><a href="index.html#galeria">Galeria</a></li>
+                    <li class="contatohref"><a href="contato.html">Contato</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="bannercontato">
+        <h1>Nos contate! E faremos deste mundo um lar para as próximas gerações</h1>
+    </section>
+
+    <main>
+        <section id="contato">
+            <div class="container">
+                <h2>Contato</h2>
+                <p style="text-align:center;margin-bottom:16px;">
+                    Você pode falar com a gente pelos canais abaixo ou preencher o formulário.
+                </p>
+                <h3>conscienciambiental@gmail.com.br</h3>
+                <h3>+55 97141-0700</h3>
+
+                <!-- Formulário (10 perguntas) -->
+                <form class="form-contato" id="formContato" action="obrigado.html" method="get">
+                    <!-- 1) Nome completo -->
+                    <div class="field-group">
+                        <label for="nome">1. Nome completo*</label>
+                        <input type="text" id="nome" name="nome" placeholder="Seu nome" required>
+                    </div>
+
+                    <!-- 2) E-mail -->
+                    <div class="field-group">
+                        <label for="email">2. E-mail*</label>
+                        <input type="email" id="email" name="email" placeholder="seu@email.com" required>
+                    </div>
+
+                    <!-- 3) Idade -->
+                    <div class="field-group">
+                        <label for="idade">3. Idade</label>
+                        <input type="number" id="idade" name="idade" min="1" max="120" placeholder="Ex.: 16">
+                    </div>
+
+                    <!-- 4) Gênero -->
+                    <fieldset class="field-group">
+                        <legend>4. Gênero</legend>
+                        <label class="radio"><input type="radio" name="genero" value="Feminino"> Feminino</label>
+                        <label class="radio"><input type="radio" name="genero" value="Masculino"> Masculino</label>
+                        <label class="radio"><input type="radio" name="genero" value="Outro"> Outro</label>
+                    </fieldset>
+
+                    <!-- 5) Como nos encontrou? -->
+                    <div class="field-group">
+                        <label for="como">5. Como nos encontrou?*</label>
+                        <select id="como" name="como" required>
+                            <option value="" disabled selected>Selecione…</option>
+                            <option>Google / Pesquisa</option>
+                            <option>Instagram</option>
+                            <option>TikTok</option>
+                            <option>YouTube</option>
+                            <option>Indicação de amigo(a)/professor(a)</option>
+                            <option>Escola / Faculdade</option>
+                            <option>Outro</option>
+                        </select>
+                    </div>
+
+                    <!-- 6) Por que nos contatou? -->
+                    <fieldset class="field-group">
+                        <legend>6. Por que nos contatou?</legend>
+                        <label class="checkbox"><input type="checkbox" name="motivos[]" value="Juntar-se à equipe"> Quero me juntar à equipe</label>
+                        <label class="checkbox"><input type="checkbox" name="motivos[]" value="Apoiar/Doar"> Quero apoiar a causa / doar</label>
+                        <label class="checkbox"><input type="checkbox" name="motivos[]" value="Levar para escola/empresa"> Levar o projeto para minha escola/empresa</label>
+                        <label class="checkbox"><input type="checkbox" name="motivos[]" value="Voluntariado"> Quero ser voluntário(a)</label>
+                        <label class="checkbox"><input type="checkbox" name="motivos[]" value="Dúvidas/Sugestões"> Tenho dúvidas/sugestões</label>
+                        <label class="checkbox"><input type="checkbox" name="motivos[]" value="Outro"> Outro</label>
+                    </fieldset>
+
+                    <!-- 7) Grau de interesse (0-10) -->
+                    <div class="field-group">
+                        <label for="grau">7. Grau de interesse (0–10)</label>
+                        <div class="range-line">
+                            <input type="range" id="grau" name="grau" min="0" max="10" value="5" oninput="grauOut.value = grau.value">
+                            <output id="grauOut" for="grau">5</output>
+                        </div>
+                    </div>
+
+                    <!-- 8) Tema que mais preocupa -->
+                    <div class="field-group">
+                        <label for="tema">8. Qual tema ambiental destes te preocupa mais?</label>
+                        <select id="tema" name="tema">
+                            <option value="" selected>Selecione…</option>
+                            <option>Desmatamento e perda de biodiversidade</option>
+                            <option>Poluição dos oceanos</option>
+                            <option>Mudanças climáticas</option>
+                            <option>Escassez de água potável</option>
+                            <option>Outro</option>
+                        </select>
+                    </div>
+
+                    <!-- 9) Ações/Atividades de interesse -->
+                    <fieldset class="field-group">
+                        <legend>9. Em quais tipos de atividades você gostaria de participar conosco?</legend>
+                        <label class="checkbox"><input type="checkbox" name="atividades[]" value="Plantio de árvores"> Mutirões de plantio</label>
+                        <label class="checkbox"><input type="checkbox" name="atividades[]" value="Limpeza de praias/rios"> Limpeza de praias/rios</label>
+                        <label class="checkbox"><input type="checkbox" name="atividades[]" value="Oficinas/palestras"> Oficinas/palestras em escolas</label>
+                        <label class="checkbox"><input type="checkbox" name="atividades[]" value="Campanhas online"> Campanhas online de conscientização</label>
+                        <label class="checkbox"><input type="checkbox" name="atividades[]" value="Grupo de estudos"> Grupo de estudos/mentoria</label>
+                    </fieldset>
+
+                    <!-- 10) Mensagem livre (opcional) -->
+                    <div class="field-group" style="grid-column: 1 / -1;">
+                        <label for="mensagem">10. Mensagem (opcional)</label>
+                        <textarea id="mensagem" name="mensagem" rows="5" placeholder="Escreva sua mensagem (opcional)..."></textarea>
+                    </div>
+
+                    <div class="actions">
+                        <button type="submit" class="btn">Enviar</button>
+                    </div>
+                </form>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

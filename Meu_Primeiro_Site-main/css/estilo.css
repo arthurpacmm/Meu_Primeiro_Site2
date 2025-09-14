@@ -1,0 +1,421 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+    scroll-behavior: smooth;
+}
+
+.logo-img {
+    height: 60px;
+}
+
+h1, h2{
+    text-align: center;
+    font-family: "DM Serif Text", serif;
+    margin-top: 1%;
+    margin-bottom: 1%;
+}
+
+p, ul:not(nav ul) li {
+    margin-left: 4%;
+    margin-right: 4%;
+}
+
+footer{
+    text-align: center;
+    font-size: 1.2em;
+    background-color: #F0E49C;
+    font-family: "DM Serif Text", serif;
+    padding-top: 0.8%;
+    padding-bottom: 0.8%;
+}
+
+.container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 20px;
+}
+
+body{
+    background-color: lemonchiffon;
+    padding-top: 150px;
+}
+
+header{
+    background-color: #FFF2A8;
+    padding: 15px 15px 15px 15px;
+    width: 100%;
+    top: 0;
+    position: fixed;
+    z-index: 1000;
+}
+
+nav ul{
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 0;
+    margin: 0;
+    gap: 20px;
+}
+
+nav ul li{
+    margin: 0;
+}
+
+nav ul li a{
+    color: black;
+    text-decoration: none;
+}
+
+a:hover{
+    color: black;
+    text-decoration: underline;
+}
+
+header .container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.logo{
+    font-size: 2em;
+    font-weight: bold;
+}
+
+.banner{
+    background: url(../img/Banner\ CA.png) no-repeat center/cover;
+    height: 700px;
+    display: flex;
+    margin-top: -30px;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.3em;
+    text-align: center;
+    text-shadow: 2px 2px 8px black;
+}
+
+.bannercontato{
+    background: url(../img/BannerContatoCA.jpg) no-repeat center/cover;
+    height: 400px;
+    display: flex;
+    padding-left: 30px;
+    padding-right: 60%;
+    margin-top: -30px;
+    align-items: center;
+    justify-content: left;
+    color: white;
+    font-size: 1.3em;
+    text-align: left;
+    text-shadow: 2px 2px 8px black;
+}
+
+#inicio{
+    padding: 35px;
+}
+
+.sobre-container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 40px;
+    max-width: 1400px;
+    margin: auto;
+}
+
+.sobre-texto{
+    flex: 1;
+    text-align: justify;
+    line-height: 1.5;
+}
+
+.sobre-texto h1{
+    font-size: 1.5;
+    margin-bottom: 20px;
+}
+
+.sobre-texto p{
+    font-size: 1;
+    line-height: 1,5;
+    text-align: justify;
+    margin-top: 10px;
+}
+
+.fonte{
+    font-size: 0.9em;
+}
+
+.hex-grid{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: center;
+    flex: 1;
+}
+
+.hex {
+    width: 140px;
+    height: 130px;
+    overflow: hidden;
+    position: relative;
+}
+
+.hex img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.card{
+    width: 70%;
+}
+
+#impactos .container{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    text-align: center;
+    padding: 50px 0;
+}
+
+#impactos .item{
+    background-color: lemonchiffon;
+    border: 3px ridge #000;
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: 0 8px 16px rgba(0 , 0 , 0 , 0.3);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    cursor: pointer;
+
+}
+
+#impactos .item:hover{
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba( 0, 0, 0, 0.4);
+}
+
+.modal{
+    background-color: lemonchiffon;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0px 4px 10px rgba(0 , 0 , 0 , 0.1);
+    margin: auto;
+    text-align: center;
+}
+
+.card{
+    max-width: 300px;
+}
+
+#impactos h3{
+    padding: 15px;
+}
+
+.fonte a link{
+    text-decoration: none;
+}
+
+.fonte a{
+    color: darkblue;
+    font-size: 0.9em;
+}
+
+.fonte a:hover{
+    color: #007bff;
+    text-decoration: underline;
+}
+
+.card h3{
+    margin-top: 0;
+}
+
+.btn{
+    display: inline-block;
+    margin-top: 15px;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    text-decoration: none;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.modal{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.6);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    overflow-y: auto;
+    z-index: 9999;
+    border-radius: 0;
+}
+
+.modal:target{
+    display: flex;
+}
+
+.modal-content{
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 400px;
+    text-align: center;
+    box-shadow: 0px 5px 20px rgba( 0, 0, 0, 0.2);
+    overflow-y: auto;
+    max-height: 80vh;  
+}
+
+.modal-content p{
+    padding: 5px;
+}
+
+.close-btn{
+    margin-top: 20px;
+    display: inline-block;
+    padding: 8px 16px;
+    background: #dd3040;
+    color: white;
+    border-radius: 20px;
+    text-decoration: none;
+}
+
+h2{
+    border: 3px black solid;
+}
+
+
+.solucoesp{
+    border: 3px black solid;
+    max-width: 85%;
+    margin: 0 auto;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.solucoesp p{
+    padding-top: 3px;
+    padding-bottom: 3px;
+}
+
+.galeriafotos {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    display: flex;
+}
+
+.galeriafotos img {
+    width: calc(33.33% - 20px);
+    height: auto ;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+    transition: transform 0.3s;
+    
+}
+
+.galeriafotos img:hover {
+    transform: scale(1.03);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.8);
+}
+
+
+
+#contato h3{
+    text-align: center;
+    font-size: large;
+}
+
+
+
+
+.contatohref{
+    text-decoration: underline;
+}
+
+
+@media (max-width:1150px){
+    .galeriafotos img {
+        width: calc(50% - 20px);
+        height: auto;
+    }
+
+        #impactos .container {
+        grid-template-columns: repeat(2, 1fr);
+        max-width: 600px;
+    }
+}
+
+@media (max-width: 500px) {
+    #impactos .container {
+        grid-template-columns: 1fr;
+    }
+
+    .item{
+        max-width: 300px;
+        margin: auto;
+    }
+}
+
+
+@media (max-width:675px){
+    header .container, .sobre-container{
+        flex-direction: column;
+        text-align: center;
+        
+    }
+
+    #impactos .container{
+        max-width: 500px;
+    }
+
+    .sobre-texto{
+        width: 80%;
+    }
+
+    .galeriafotos {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px;
+        display: flex;
+    }
+
+    nav ul{
+        margin-top: 10px;
+        flex-direction: column;
+    }
+
+    body{
+        padding-top: 250px;
+    }
+
+    .galeriafotos img {
+        width: 85%;
+        height: auto;
+    }
+
+    .bannercontato{
+        background: url(../img/BannerContatoCA.jpg) no-repeat center/cover;
+        height: 400px;
+        display: flex;
+        padding-left: 10px;
+        padding-right: 60%;
+        margin-top: 60px;
+        align-items: center;
+        justify-content: left;
+        color: white;
+        font-size: 1.0em;
+        text-align: left;
+        text-shadow: 2px 2px 8px black;
+    }
+}

@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Jogo da Tartaruga</title>
+  <link rel="stylesheet" href="css/jogo.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+
+  <!-- Aviso para mobile -->
+  <div id="unsupportedMobile" aria-live="polite">
+    <div class="card">
+      <h2>Disponível apenas no computador 🐢</h2>
+      <p>Este jogo foi feito para ser jogado com teclado (setas esquerda/direita) e não está disponível em celulares.</p>
+      <div class="actions">
+        <a class="btn" href="index.html">Voltar ao site</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Página do jogo (fica oculta no mobile) -->
+  <div id="gamePage">
+    <div id="gameArea">
+
+      <!-- mensagem de instrução -->
+      <div id="mensagem">Desvie do lixo e coma as algas!</div>
+      
+      <!-- jogador (tartaruga) -->
+      <div id="player"></div>
+      
+      <!-- placar -->
+      <div id="score">Pontos: 0</div>
+
+      <!-- vidas (corações) -->
+      <div id="vidas">
+        <img src="Img/Jogo/Jogo.Vida.png" class="coraçao" alt="vida">
+        <img src="Img/Jogo/Jogo.Vida.png" class="coraçao" alt="vida">
+        <img src="Img/Jogo/Jogo.Vida.png" class="coraçao" alt="vida">
+      </div>
+
+      <!-- botão de voltar -->
+      <a id="btnVoltar" href="index.html">Voltar ao site</a>
+    </div>
+  </div>
+
+  <script>
+    // ===== Detecção de mobile =====
+    function isMobileDevice() {
+      const uaMobile = /Mobi|Android|iPhone|iPad|iPod|IEMobile|Opera Mini/i.test(navigator.userAgent);
+      const touchCoarse = window.matchMedia && window.matchMedia('(hover: none) and (pointer: coarse)').matches;
+      const smallScreen = Math.min(window.innerWidth, window.innerHeight) < 768;
+      return uaMobile || (touchCoarse && smallScreen);
+    }
+
+    const unsupported = document.getElementById('unsupportedMobile');
+    const gamePage = document.getElementById('gamePage');
+
+    if (isMobileDevice()) {
+      // Mostra aviso e não inicializa o jogo
+      unsupported.style.display = 'flex';
+      gamePage.style.display = 'none';
+    } else {
+      // ====== Código do jogo (somente desktop) ======
+      const player = document.getElementById("player");
+      const gameArea = document.getElementById("gameArea");
+      const scoreDisplay = document.getElementById("score");
+      const vidasContainer = document.getElementById("vidas");
+
+      let pontos = 0;
+      let vidas = 3;
+      let playerX = (gameArea.clientWidth - 60) / 2; // centraliza
+
+      // posição inicial da tartaruga
+      player.style.left = playerX + "px";
+
+      // movimentação
+      document.addEventListener("keydown", (e) => {
+        const maxX = gameArea.clientWidth - 60;
+        if (e.key === "ArrowLeft" && playerX > 0) {
+          playerX = Math.max(0, playerX - 20);
+        } else if (e.key === "ArrowRight" && playerX < maxX) {
+          playerX = Math.min(maxX, playerX + 20);
+        }
+        player.style.left = playerX + "px";
+      });
+
+      // cria itens (comida ou lixo)
+      function criarItem(tipo) {
+        const item = document.createElement("div");
+        item.classList.add("item");
+        if (tipo === "comida") {
+          item.classList.add("comida");
+        } else {
+          item.classList.add("lixoRuim");
+        }
+
+        const maxLeft = gameArea.clientWidth - 40;
+        item.style.left = Math.random() * maxLeft + "px";
+        item.style.top = "0px";
+        gameArea.appendChild(item);
+
+        let itemY = 0;
+        const queda = setInterval(() => {
+          itemY += 5;
+          item.style.top = itemY + "px";
+
+          const playerRect = player.getBoundingClientRect();
+          const itemRect = item.getBoundingClientRect();
+
+          // colisão
+          if (
+            playerRect.left < itemRect.right &&
+            playerRect.right > itemRect.left &&
+            playerRect.top < itemRect.bottom &&
+            playerRect.bottom > itemRect.top
+          ) {
+            if (tipo === "comida") {
+              pontos++;
+              scoreDisplay.textContent = "Pontos: " + pontos;
+            } else {
+              vidas--;
+              atualizarVidas();
+            }
+            item.remove();
+            clearInterval(queda);
+          }
+
+          // saiu da tela
+          if (itemY > gameArea.clientHeight) {
+            item.remove();
+            clearInterval(queda);
+          }
+        }, 30);
+      }
+
+      // atualiza vidas
+      function atualizarVidas() {
+        vidasContainer.innerHTML = "";
+        for (let i = 0; i < vidas; i++) {
+          const coracao = document.createElement("Img/Jogo/Jogo.Vida.png");
+          coracao.src = "Img/Jogo/Jogo.Vida.png";
+          coracao.classList.add("coraçao");
+          coracao.alt = "vida";
+          vidasContainer.appendChild(coracao);
+        }
+        if (vidas <= 0) {
+          alert("Game Over!");
+          location.reload();
+        }
+      }
+
+      // spawn automático
+      setInterval(() => {
+        const tipo = Math.random() < 0.6 ? "comida" : "lixo";
+        criarItem(tipo);
+      }, 1500);
+
+      // reajusta posição ao redimensionar (desktop)
+      window.addEventListener('resize', () => {
+        const maxX = gameArea.clientWidth - 60;
+        playerX = Math.min(playerX, maxX);
+        player.style.left = playerX + "px";
+      });
+    }
+  </script>
+</body>
+</html>
